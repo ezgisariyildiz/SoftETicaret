@@ -1,0 +1,75 @@
+﻿@using ETicaretData.Entities
+@model Product
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Ürün Görseli -->
+        <div class="col-md-5 text-center">
+            <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow-sm">
+        </div>
+
+        <!-- Ürün Bilgileri -->
+        <div class="col-md-7">
+            <h1 class="fw-bold">@Model.Name</h1>
+            <div class="mb-2">
+                <span class="badge bg-primary">Stok: @Model.Stock</span>
+                <span class="badge bg-secondary">Ürün Kodu: #0342216</span>
+            </div>
+            <p class="lead">@Model.Description</p>
+
+            <!-- Puanlama Sistemi -->
+            <div class="d-flex align-items-center mb-3">
+                <div class="text-warning">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="ms-2 badge bg-success">60 Değerlendirme</span>
+            </div>
+
+            <!-- Fiyat ve Sepete Ekleme -->
+            <div class="d-flex align-items-center">
+                <span class="badge bg-danger fs-4 fw-bold">@Model.Price.ToString("c")</span>
+                <a asp-action="Buy" asp-controller="Card" asp-route-id="@Model.Id" class="btn btn-success ms-3">
+                    <i class="fa-solid fa-cart-plus"></i> Sepete Ekle
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekmeler -->
+    <ul class="nav nav-tabs mt-4" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc-tab-pane" type="button" role="tab" aria-controls="desc-tab-pane" aria-selected="true">Açıklama</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment-tab-pane" type="button" role="tab" aria-controls="payment-tab-pane" aria-selected="false">Ödeme Yöntemleri</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" type="button" role="tab" aria-controls="review-tab-pane" aria-selected="false">Yorumlar</button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="productTabContent">
+        <div class="tab-pane fade show active p-3 border rounded" id="desc-tab-pane" role="tabpanel" aria-labelledby="desc-tab">@Model.Description</div>
+        <div class="tab-pane fade p-3 border rounded" id="payment-tab-pane" role="tabpanel" aria-labelledby="payment-tab">
+            <p>Visa, MasterCard, Havale/EFT ve Kapıda Ödeme seçenekleri mevcuttur.</p>
+        </div>
+        <div class="tab-pane fade p-3 border rounded" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab">
+            <h5>Kullanıcı Yorumları</h5>
+            <div class="border p-2 my-2">
+                <strong>Ahmet K.</strong> - 20 Mart 2025
+                <p>Ürün çok kaliteli, hızlı kargo için teşekkür ederim!</p>
+                <span class="text-warning">Puan: 5/5</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+

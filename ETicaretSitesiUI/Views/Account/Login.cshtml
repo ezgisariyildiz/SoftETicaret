@@ -1,0 +1,37 @@
+﻿@using ETicaretData.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4">Giriş Yap</h1>
+<hr />
+
+<form asp-action="Login" method="post" class="container mt-4">
+    <div class="row mb-3">
+        <label asp-for="UserName" class="col-md-3 col-form-label">Kullanıcı Adı</label>
+        <div class="col-md-9">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Password" class="col-md-3 col-form-label">Şifre</label>
+        <div class="col-md-9">
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="RememberMe" class="form-check-input" />
+        <label asp-for="RememberMe" class="form-check-label">Beni Hatırla</label>
+    </div>
+
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+    </div>
+</form>

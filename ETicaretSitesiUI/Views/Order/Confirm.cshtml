@@ -1,0 +1,66 @@
+﻿@using ETicaretData.Entities
+@model Order
+@{
+    ViewData["Title"] = "Confirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Order Confirmation</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.OrderNumber)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.OrderNumber)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.OrderDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.OrderDate)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Total)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Total)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.orderState)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.orderState)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.UserName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.UserName)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.AddressTitle)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.AddressTitle)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Address)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Address)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.City)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.City)
+    </dd>
+</dl>
+
+<div>
+    <form method="post" asp-action="Confirm" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-primary">Onayla</button>
+    </form>
+    <a asp-action="Index" asp-controller="Order">Back to List</a>
+</div>

@@ -1,0 +1,19 @@
+﻿@using ETicaretData.Identity
+@model AppUser
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Profile</h2>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p>Surname: @Model.Surname</p>
+    <p>Email: @Model.Email</p>
+    <p>Username: @Model.UserName</p>
+    <p>Phone Number: @Model.PhoneNumber</p>
+    <a href="@Url.Action("Edit")">Profili Düzenle</a>
+</div>
+

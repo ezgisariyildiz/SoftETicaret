@@ -1,0 +1,47 @@
+﻿@using ETicaretData.Entities
+@model IEnumerable<IGrouping<int, OrderLine>>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>OrderId</th>
+            <th>Order State</th>
+            <th>ProductId</th>
+            <th>Product Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            @foreach (var item in group)
+            {
+                <tr class="order-row @(group.Count() > 1 ? "same-order" : "different-order")">
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Order.orderState)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
+                </tr>
+            }
+            <tr class="order-summary">
+                <td colspan="7">
+                    <strong>Order ID: @group.Key</strong> - Total Items: @group.Count()
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <div class="order-divider"></div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
